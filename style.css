@@ -1,176 +1,152 @@
-:root {
-    --background-color-light: #e6e6e6; /* Cor de fundo no modo claro */
-    --text-color-light: #333; /* Cor do texto no modo claro */
-    --background-color-dark: #1a1a1a; /* Cor de fundo no modo escuro */
-    --text-color-dark: #ffffff; /* Cor do texto no modo escuro */
-    --card-background-light: #f4f4f4; /* Cor de fundo dos cards no modo claro */
-    --card-background-dark: #444; /* Cor de fundo dos cards no modo escuro */
-}
-
-/* Estilos Gerais */
-body {
-    font-family: 'Roboto Mono', monospace;
+* {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    transition: background-color 0.3s, color 0.3s;
+}
+
+body {
+    background-color: #f6f8fa; /* Cor de fundo clara do GitHub */
+    color: #24292e; /* Cor do texto do GitHub */
+    font-family: 'Roboto', sans-serif; /* Fonte Roboto */
+    transition: background-color 0.3s, color 0.3s; /* Suaviza a transição entre temas */
+}
+
+body.dark-mode {
+    background-color: #212121; /* Cor de fundo escura */
+    color: #ffffff; /* Texto branco no modo escuro */
 }
 
 header {
     display: flex;
-    flex-direction: column;
     align-items: center;
+    justify-content: space-between;
     padding: 20px;
-    background-color: #222;
+    background-color: #ffffff; /* Fundo do cabeçalho */
+    border-bottom: 1px solid #e1e4e8; /* Borda inferior do cabeçalho */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil */
 }
 
-/* Ajustes de cor do texto do header por modo */
-body.light-mode header {
-    color: var(--text-color-light); /* Para o modo claro */
+header h1 {
+    font-size: 24px;
+    margin-right: 20px;
 }
 
-body.dark-mode header {
-    color: var(--text-color-dark); /* Para o modo escuro */
+.search-label input {
+    padding: 8px 12px;
+    border: 1px solid #e1e4e8; /* Borda do campo de busca */
+    border-radius: 4px;
+    width: 200px; /* Largura do campo de busca */
 }
 
-h1, h2 {
-    margin: 0;
+.search-label input:focus {
+    outline: none; /* Remove o contorno padrão */
+    border-color: #0366d6; /* Cor da borda ao focar */
 }
 
-/* Estilo do botão de menu */
-#menuToggle {
-    background: none;
-    border: none;
-    font-size: 1.5em;
-    cursor: pointer;
-    color: var(--text-color-light); /* Usando variável para cor do botão */
+label {
+    display: flex;
+    align-items: center;
 }
 
-/* Estilo da lista de livros */
-.book-list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px;
-    padding: 20px;
+label input[type="checkbox"] {
+    margin-right: 5px;
 }
 
-.book-item {
-    background-color: var(--card-background-light); /* Fundo padrão */
-    color: var(--text-color-light); /* Cor padrão do texto */
-    border-radius: 5px;
-    padding: 10px;
-    text-align: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
+.ag-format-container {
+    padding: 20px; /* Espaçamento dentro do contêiner */
 }
 
-/* Efeito ao passar o mouse sobre os cards */
-.book-item:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+.ag-courses_box {
+    display: flex;
+    flex-wrap: wrap; /* Permite que os cards quebrem em múltiplas linhas */
 }
 
-/* Estilo do link de download */
-.download-link {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 5px 10px;
-    background-color: #007bff;
-    color: var(--text-color-light);
-    border-radius: 5px;
-    text-decoration: none;
+.ag-courses_item {
+    background-color: #ffffff; /* Fundo branco dos cards */
+    border: 1px solid #e1e4e8; /* Borda dos cards */
+    border-radius: 6px; /* Cantos arredondados */
+    margin: 10px;
+    padding: 15px;
+    width: calc(33.333% - 20px); /* Três cards por linha */
+    transition: box-shadow 0.2s; /* Transição suave para a sombra */
 }
 
-.download-link:hover {
-    background-color: #0056b3;
+.ag-courses_item:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra ao passar o mouse */
 }
 
-/* Rodapé */
+.ag-courses-item_link {
+    text-decoration: none; /* Remove o sublinhado dos links */
+    color: #24292e; /* Cor do texto do link */
+}
+
+.ag-courses-item_title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px; /* Espaço abaixo do título */
+}
+
+.ag-courses-item_date-box {
+    font-size: 14px; /* Tamanho do texto */
+    color: #586069; /* Cor do texto secundário */
+}
+
 footer {
     text-align: center;
-    padding: 10px;
-    background-color: #222;
-    color: var(--text-color-light);
+    padding: 20px;
+    background-color: #ffffff; /* Fundo do rodapé */
+    border-top: 1px solid #e1e4e8; /* Borda superior do rodapé */
+    margin-top: 20px; /* Espaço acima do rodapé */
+}
+
+footer p {
+    color: #586069; /* Cor do texto do rodapé */
+    font-size: 14px;
+}
+
+/* Adicione ao seu CSS existente */
+
+.modal {
+    display: none; /* Inicialmente escondido */
     position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
     width: 100%;
-    bottom: 0;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8); /* Fundo semi-transparente */
 }
 
-/* Temas Claro e Escuro */
-body.light-mode {
-    background-color: var(--background-color-light); /* Cor de fundo no modo claro */
-    color: var(--text-color-light); /* Cor do texto no modo claro */
+.modal-content {
+    background-color: #ffffff; /* Fundo branco do modal */
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #e1e4e8;
+    width: 80%; /* Largura do modal */
+    max-width: 600px; /* Largura máxima do modal */
+    border-radius: 8px; /* Cantos arredondados */
 }
 
-body.dark-mode {
-    background-color: var(--background-color-dark); /* Cor de fundo no modo escuro */
-    color: var(--text-color-dark); /* Cor do texto no modo escuro */
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
 }
 
-body.dark-mode header,
-body.dark-mode footer {
-    background-color: #222;
+.close-button:hover,
+.close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
 }
 
-body.dark-mode .book-item {
-    background-color: var(--card-background-dark); /* Fundo dos cards no modo escuro */
-    color: var(--text-color-dark); /* Cor do texto no modo escuro */
+.modal ul {
+    list-style-type: none; /* Remove marcadores da lista */
+    padding: 0; /* Remove padding da lista */
 }
 
-/* Responsivo */
-@media (max-width: 600px) {
-    .book-list {
-        grid-template-columns: 1fr; /* Exibe uma coluna em telas pequenas */
-    }
-
-    footer {
-        position: static; /* Remove a posição fixa do rodapé em telas pequenas */
-    }
-}
-
-/* Estilo do campo de input */
-.search-input {
-    width: 100%; /* Largura total do contêiner */
-    max-width: 400px; /* Limite de largura */
-    padding: 10px; /* Espaçamento interno */
-    border: 1px solid #ccc; /* Borda clara */
-    border-radius: 25px; /* Bordas arredondadas */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil */
-    transition: border 0.3s, box-shadow 0.3s; /* Transições suaves */
-    font-size: 16px; /* Tamanho da fonte */
-    outline: none; /* Remove o contorno padrão */
-    background-color: var(--card-background-light); /* Fundo padrão no modo claro */
-    color: var(--text-color-light); /* Cor do texto no modo claro */
-}
-
-/* Efeito ao focar no campo de input */
-.search-input:focus {
-    border-color: #007bff; /* Cor da borda ao focar */
-    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2); /* Sombra mais intensa */
-}
-
-/* Estilos para o modo escuro */
-body.dark-mode .search-input {
-    background-color: var(--card-background-dark); /* Fundo no modo escuro */
-    color: var(--text-color-dark); /* Cor do texto no modo escuro */
-    border: 1px solid #555; /* Cor da borda no modo escuro */
-}
-
-/* Estilo do ícone de busca (opcional) */
-.search-icon {
-    position: absolute; /* Posiciona o ícone dentro do contêiner */
-    left: 10px; /* Margem à esquerda */
-    top: 50%; /* Centraliza verticalmente */
-    transform: translateY(-50%); /* Ajusta a posição do ícone */
-    color: var(--text-color-light); /* Cor do ícone no modo claro */
-}
-
-/* Estilos para o ícone no modo escuro */
-body.dark-mode .search-icon {
-    color: var(--text-color-dark); /* Cor do ícone no modo escuro */
-}
-
-/* Contêiner para o input e o ícone */
-.search-container {
-    position: relative; /* Necessário para o posicionamento absoluto do ícone */
-    margin: 20px 0; /* Margens para espaçamento */
+.modal ul li {
+    padding: 10px 0; /* Espaçamento entre os itens */
 }
