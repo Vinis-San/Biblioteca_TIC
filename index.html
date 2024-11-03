@@ -4,28 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css"> <!-- Link para o arquivo CSS -->
-    <title>Oráculo</title>
+    <title>Biblioteca de TI</title>
 </head>
-<body class="light-mode"> <!-- Começa no modo claro -->
+<body class="dark-mode"> <!-- Começa no modo claro -->
     <header>
         <h1>Bem-vindo ao Oráculo</h1>
         <label class="search-label">
             <input type="text" placeholder="Buscar pastas..." />
         </label>
-        <label>
-            <input type="checkbox" id="theme-switch" />
-            <span>Trocar Tema</span>
-        </label>
+        <label class="switch">
+            <input type="checkbox">
+            <span class="slider">Trocar Tema</span>
+          </label>
     </header>
     <div class="ag-format-container">
         <div class="ag-courses_box" id="bookList">
             <!-- Os cards de pasta e livros serão gerados aqui pelo JavaScript -->
         </div>
     </div>
-    <div id="modal" class="modal">
+    <div id="modal" class="modal" style="display: none;"> <!-- Modal inicialmente escondido -->
         <div class="modal-content">
             <span class="close-button">&times;</span>
-            <h2>Livros na Pasta</h2>
+            <h2 id="modal-title">Livros na Pasta</h2> <!-- Adicionado id aqui -->
             <ul id="book-list-modal"></ul>
         </div>
     </div>

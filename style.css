@@ -26,6 +26,11 @@ header {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil */
 }
 
+body.dark-mode header {
+    background-color: #333333; /* Fundo do cabeçalho no modo escuro */
+    border-bottom: 1px solid #444444; /* Borda inferior no modo escuro */
+}
+
 header h1 {
     font-size: 24px;
     margin-right: 20px;
@@ -41,6 +46,12 @@ header h1 {
 .search-label input:focus {
     outline: none; /* Remove o contorno padrão */
     border-color: #0366d6; /* Cor da borda ao focar */
+}
+
+body.dark-mode .search-label input {
+    background-color: #444444; /* Fundo do campo de busca no modo escuro */
+    color: #ffffff; /* Texto branco no campo de busca no modo escuro */
+    border-color: #666666; /* Cor da borda no modo escuro */
 }
 
 label {
@@ -75,9 +86,18 @@ label input[type="checkbox"] {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra ao passar o mouse */
 }
 
+body.dark-mode .ag-courses_item {
+    background-color: #444444; /* Fundo dos cards no modo escuro */
+    border: 1px solid #666666; /* Borda dos cards no modo escuro */
+}
+
 .ag-courses-item_link {
     text-decoration: none; /* Remove o sublinhado dos links */
     color: #24292e; /* Cor do texto do link */
+}
+
+body.dark-mode .ag-courses-item_link {
+    color: #ffffff; /* Texto do link em branco no modo escuro */
 }
 
 .ag-courses-item_title {
@@ -91,6 +111,10 @@ label input[type="checkbox"] {
     color: #586069; /* Cor do texto secundário */
 }
 
+body.dark-mode .ag-courses-item_date-box {
+    color: #aaaaaa; /* Cor do texto secundário no modo escuro */
+}
+
 footer {
     text-align: center;
     padding: 20px;
@@ -99,13 +123,20 @@ footer {
     margin-top: 20px; /* Espaço acima do rodapé */
 }
 
+body.dark-mode footer {
+    background-color: #333333; /* Fundo do rodapé no modo escuro */
+}
+
 footer p {
     color: #586069; /* Cor do texto do rodapé */
     font-size: 14px;
 }
 
-/* Adicione ao seu CSS existente */
+body.dark-mode footer p {
+    color: #aaaaaa; /* Cor do texto do rodapé no modo escuro */
+}
 
+/* Estilo do Modal */
 .modal {
     display: none; /* Inicialmente escondido */
     position: fixed;
@@ -128,6 +159,11 @@ footer p {
     border-radius: 8px; /* Cantos arredondados */
 }
 
+body.dark-mode .modal-content {
+    background-color: #444444; /* Fundo do modal no modo escuro */
+    border: 1px solid #666666; /* Borda do modal no modo escuro */
+}
+
 .close-button {
     color: #aaa;
     float: right;
@@ -142,11 +178,51 @@ footer p {
     cursor: pointer;
 }
 
-.modal ul {
-    list-style-type: none; /* Remove marcadores da lista */
-    padding: 0; /* Remove padding da lista */
+/* Estilo dos cards dos livros */
+.book-cards-container {
+    display: flex;
+    flex-wrap: wrap; /* Permite que os cards quebrem em múltiplas linhas */
+    justify-content: space-between; /* Espaçamento entre os cards */
 }
 
-.modal ul li {
-    padding: 10px 0; /* Espaçamento entre os itens */
+.book-card {
+    background-color: #f6f8fa; /* Fundo claro dos cards */
+    border: 1px solid #e1e4e8; /* Borda dos cards */
+    border-radius: 6px; /* Cantos arredondados */
+    margin: 10px; /* Margem entre os cards */
+    padding: 15px; /* Espaçamento interno dos cards */
+    width: calc(33.333% - 20px); /* Largura dos cards */
+    transition: box-shadow 0.2s; /* Transição suave para a sombra */
+}
+
+.book-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra ao passar o mouse */
+}
+
+body.dark-mode .book-card {
+    background-color: #444444; /* Fundo dos cards no modo escuro */
+    border: 1px solid #666666; /* Borda dos cards no modo escuro */
+}
+
+.book-card h3 {
+    font-size: 18px; /* Tamanho do título do livro */
+    margin-bottom: 10px; /* Espaço abaixo do título */
+}
+
+.book-card p {
+    font-size: 14px; /* Tamanho do texto da descrição do livro */
+}
+
+.book-card a {
+    display: inline-block; /* Para o botão de download */
+    margin-top: 10px; /* Espaço acima do botão */
+    padding: 10px 15px; /* Espaçamento do botão */
+    background-color: #0366d6; /* Cor de fundo do botão */
+    color: white; /* Cor do texto do botão */
+    text-decoration: none; /* Remove o sublinhado do link */
+    border-radius: 4px; /* Cantos arredondados do botão */
+}
+
+.book-card a:hover {
+    background-color: #005cc5; /* Cor de fundo do botão ao passar o mouse */
 }
