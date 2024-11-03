@@ -46,7 +46,7 @@ async function showBooks(folderPath) {
         const bookListModal = document.getElementById("book-list-modal");
         const modalTitle = document.getElementById("modal-title");
 
-        modalTitle.textContent = `Livros na pasta: ${folderPath.split('/').pop()}`; // Define o título com o nome da pasta
+        modalTitle.textContent = `${folderPath.split('/').pop()}`; // Define o título com o nome da pasta
         bookListModal.innerHTML = ""; // Limpa o conteúdo anterior
 
         data.forEach(book => {

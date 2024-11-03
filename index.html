@@ -4,19 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css"> <!-- Link para o arquivo CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap" rel="stylesheet"> 
     <title>Biblioteca de TI</title>
 </head>
 <body class="dark-mode"> <!-- Começa no modo claro -->
     <header>
-        <h1>Bem-vindo ao Oráculo</h1>
-        <label class="search-label">
-            <input type="text" placeholder="Buscar pastas..." />
-        </label>
-        <label class="switch">
+        <h1>Biblioteca de TI</h1>
+        <label class="switch" id="theme-switch">
             <input type="checkbox">
-            <span class="slider">Trocar Tema</span>
+            <span class="slider"></span>
           </label>
     </header>
+    <label class="search-label">
+        <input type="text" placeholder="Buscar pastas..." />
+    </label>
     <div class="ag-format-container">
         <div class="ag-courses_box" id="bookList">
             <!-- Os cards de pasta e livros serão gerados aqui pelo JavaScript -->
@@ -30,7 +31,7 @@
         </div>
     </div>
     <footer>
-        <p>© 2024 Todos os direitos reservados.</p>
+        <p>   © 2024 Todos os direitos reservados.</p>
     </footer>
     <script src="script.js"></script> <!-- Link para o arquivo JavaScript -->
 </body>

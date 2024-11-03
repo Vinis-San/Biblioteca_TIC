@@ -1,4 +1,4 @@
-* {
+* { 
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -7,7 +7,7 @@
 body {
     background-color: #f6f8fa; /* Cor de fundo clara do GitHub */
     color: #24292e; /* Cor do texto do GitHub */
-    font-family: 'Roboto', sans-serif; /* Fonte Roboto */
+    font-family: 'Inter', sans-serif; /* Fonte Inter */
     transition: background-color 0.3s, color 0.3s; /* Suaviza a transição entre temas */
 }
 
@@ -32,15 +32,23 @@ body.dark-mode header {
 }
 
 header h1 {
-    font-size: 24px;
+    font-size: 22px; /* Diminuindo o tamanho da fonte */
     margin-right: 20px;
+    font-weight: normal; /* Não deixar em negrito */
+}
+
+.search-label {
+    display: flex; /* Usar flexbox para centralização */
+    justify-content: center; /* Centraliza o conteúdo */
+    margin-top: 20px; /* Espaço acima do campo de busca */
 }
 
 .search-label input {
     padding: 8px 12px;
     border: 1px solid #e1e4e8; /* Borda do campo de busca */
     border-radius: 4px;
-    width: 200px; /* Largura do campo de busca */
+    width: 400px; /* Largura do campo de busca */
+    margin: auto; /* Centraliza o campo de busca dentro do flex container */
 }
 
 .search-label input:focus {
@@ -101,13 +109,13 @@ body.dark-mode .ag-courses-item_link {
 }
 
 .ag-courses-item_title {
-    font-size: 18px;
-    font-weight: bold;
+    font-size: 16px; /* Diminuindo o tamanho do título */
+    font-weight: normal; /* Não deixar em negrito */
     margin-bottom: 5px; /* Espaço abaixo do título */
 }
 
 .ag-courses-item_date-box {
-    font-size: 14px; /* Tamanho do texto */
+    font-size: 12px; /* Diminuindo o tamanho do texto */
     color: #586069; /* Cor do texto secundário */
 }
 
@@ -116,7 +124,7 @@ body.dark-mode .ag-courses-item_date-box {
 }
 
 footer {
-    text-align: center;
+    text-align: left;
     padding: 20px;
     background-color: #ffffff; /* Fundo do rodapé */
     border-top: 1px solid #e1e4e8; /* Borda superior do rodapé */
@@ -129,7 +137,7 @@ body.dark-mode footer {
 
 footer p {
     color: #586069; /* Cor do texto do rodapé */
-    font-size: 14px;
+    font-size: 12px; /* Diminuindo o tamanho do texto */
 }
 
 body.dark-mode footer p {
@@ -162,6 +170,11 @@ body.dark-mode footer p {
 body.dark-mode .modal-content {
     background-color: #444444; /* Fundo do modal no modo escuro */
     border: 1px solid #666666; /* Borda do modal no modo escuro */
+}
+
+.modal-content h2 {
+    font-size: 18px; /* Tamanho do título do modal */
+    font-weight: normal; /* Não deixar em negrito */
 }
 
 .close-button {
@@ -205,24 +218,84 @@ body.dark-mode .book-card {
 }
 
 .book-card h3 {
-    font-size: 18px; /* Tamanho do título do livro */
+    font-size: 16px; /* Diminuindo o tamanho do título do livro */
     margin-bottom: 10px; /* Espaço abaixo do título */
+    font-weight: normal; /* Não deixar em negrito */
 }
 
 .book-card p {
-    font-size: 14px; /* Tamanho do texto da descrição do livro */
+    font-size: 12px; /* Diminuindo o tamanho do texto da descrição do livro */
 }
 
 .book-card a {
     display: inline-block; /* Para o botão de download */
     margin-top: 10px; /* Espaço acima do botão */
     padding: 10px 15px; /* Espaçamento do botão */
-    background-color: #0366d6; /* Cor de fundo do botão */
+    background-color: #f8f8f8; /* Cor de fundo do botão */
     color: white; /* Cor do texto do botão */
-    text-decoration: none; /* Remove o sublinhado do link */
-    border-radius: 4px; /* Cantos arredondados do botão */
+    border-radius: 4px; /* Cantos arredondados */
+    text-decoration: none; /* Remove o sublinhado */
 }
 
 .book-card a:hover {
-    background-color: #005cc5; /* Cor de fundo do botão ao passar o mouse */
+    background-color: #0056b3; /* Cor de fundo do botão ao passar o mouse */
 }
+
+body.dark-mode .book-card a {
+    background-color: #0056b3; /* Cor de fundo do botão no modo escuro */
+}
+
+body.dark-mode .book-card a:hover {
+    background-color: #007bff; /* Cor de fundo do botão ao passar o mouse no modo escuro */
+}
+
+
+.switch {
+    font-size: 17px;
+    position: relative;
+    display: inline-block;
+    width: 3.5em;
+    height: 1.5em;
+  }
+  
+  /* Hide default HTML checkbox */
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  /* The slider */
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #1f1f1f;
+    box-shadow: inset 2px 5px 10px rgba(0,0,0,0.3);
+    transition: .4s;
+    border-radius: 5px;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 0.8em;
+    width: 0.1em;
+    border-radius: 0px;
+    left: 0.3em;
+    bottom: 0.3em;
+    background-color: rgb(131, 131, 131);
+    transition: .7s;
+  }
+  
+  input:checked + .slider {
+    background-color: #ffffff;
+    box-shadow: inset 2px 5px 10px rgb(0, 0, 0);
+  }
+  
+  input:checked + .slider:before {
+    transform: translateX(2.8em) rotate(360deg);
+  }
