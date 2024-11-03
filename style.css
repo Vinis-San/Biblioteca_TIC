@@ -88,12 +88,12 @@ label input[type="checkbox"] {
     padding: 15px;
     width: calc(33.333% - 20px); /* Três cards por linha */
     transition: box-shadow 0.2s; /* Transição suave para a sombra */
+    position: relative; /* Para posicionamento do link */
 }
 
 .ag-courses_item:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra ao passar o mouse */
 }
-
 body.dark-mode .ag-courses_item {
     background-color: #444444; /* Fundo dos cards no modo escuro */
     border: 1px solid #666666; /* Borda dos cards no modo escuro */
@@ -102,6 +102,8 @@ body.dark-mode .ag-courses_item {
 .ag-courses-item_link {
     text-decoration: none; /* Remove o sublinhado dos links */
     color: #24292e; /* Cor do texto do link */
+    display: block; /* Faz o link ocupar todo o espaço do card */
+    height: 100%; /* Garante que o link ocupe a altura total do card */
 }
 
 body.dark-mode .ag-courses-item_link {

@@ -14,17 +14,24 @@ async function fetchBooks() {
             if (folder.type === "dir") {
                 const folderCard = document.createElement("div");
                 folderCard.classList.add("ag-courses_item");
-
+        
+                // Link que envolve todo o card
                 const folderLink = document.createElement("a");
-                folderLink.href = "#";
+                folderLink.href = "#"; // Coloque a URL ou lógica para abrir a pasta aqui
                 folderLink.classList.add("ag-courses-item_link");
+                
+                // Adiciona o nome da pasta como conteúdo do link
                 folderLink.textContent = folder.name;
+        
+                folderCard.appendChild(folderLink);
+                bookListContainer.appendChild(folderCard);
+        
+                // Adiciona o evento de clique no link
                 folderLink.addEventListener("click", function() {
                     showBooks(folder.path); // Chama a função showBooks
                 });
-
-                folderCard.appendChild(folderLink);
-                bookListContainer.appendChild(folderCard);
+        
+                folderCard.appendChild(folderLink); // Adiciona o link ao card
             }
         });
     } catch (error) {
