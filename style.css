@@ -229,6 +229,60 @@ body.dark-mode .book-card {
     font-size: 12px; /* Diminuindo o tamanho do texto da descrição do livro */
 }
 
+.download-btn {
+    padding: 0.4rem 1.6rem; /* Ajusta o preenchimento interno para se adequar à altura e largura menores */
+    border: none; /* Remove as bordas do botão */
+    outline: none; /* Remove o contorno padrão que aparece ao focar no botão */
+    font-size: 0.9rem; /* Ajusta o tamanho da fonte para se adequar ao novo tamanho do botão */
+    border-radius: 0.3rem; /* Arredonda os cantos do botão */
+    font-weight: 600; /* Define o peso da fonte como semi-negrito */
+    background-color: rgba(212, 212, 212, 0.953); /* Define a cor de fundo do botão com leve transparência */
+    position: relative; /* Define a posição como relativa para permitir posicionamento absoluto de elementos internos */
+    overflow: hidden; /* Esconde qualquer conteúdo que ultrapasse os limites do botão */
+    cursor: pointer; /* Muda o cursor para uma mão ao passar sobre o botão */
+    transition: 0.4s ease-in-out; /* Adiciona uma transição suave de 0.4 segundos para todas as propriedades que mudarem */
+    height: 30px; /* Define a altura do botão */
+    width: 100px; /* Define a largura do botão */
+    margin-top: 2px;
+}
+
+.download-btn .text {
+    position: absolute; /* Posiciona o texto de forma absoluta dentro do botão */
+    left: 1rem; /* Alinha o texto à esquerda com 1rem de margem */
+    top: 50%; /* Centraliza verticalmente o texto */
+    transform: translateY(-50%); /* Ajusta a posição vertical do texto para o centro */
+    transition: 0.4s ease-in-out; /* Adiciona uma transição suave para mudanças na opacidade do texto */
+    color: rgb(50, 50, 50); /* Define a cor do texto como um cinza escuro */
+}
+
+.svg {
+    transform: translateY(-20px) rotate(30deg); /* Inicialmente move o SVG para cima e o rotaciona */
+    opacity: 0; /* Inicialmente torna o SVG invisível */
+    width: 1.2rem; /* Ajusta a largura do SVG para um tamanho adequado */
+    height: 1.2rem; /* Define a altura do SVG */
+    transition: 0.4s ease-in-out; /* Adiciona uma transição suave para mudanças na transformação e opacidade do SVG */
+}
+
+.download-btn:hover {
+    background-color: rgb(50, 50, 50); /* Muda a cor de fundo do botão para cinza escuro ao passar o mouse */
+}
+
+.download-btn:hover .svg {
+    display: inline-block; /* Mostra o SVG quando o botão é hoverado */
+    transform: translateY(0px) rotate(0deg); /* Reseta a transformação do SVG para sua posição original */
+    opacity: 1; /* Torna o SVG visível */
+}
+
+.download-btn:hover .text {
+    opacity: 0; /* Torna o texto invisível ao passar o mouse sobre o botão */
+}
+
+.download-btn:active {
+    scale: 0.97; /* Reduz a escala do botão para 97% ao ser clicado, dando um efeito de pressionado */
+}
+
+
+
 .book-card a {
     display: inline-block; /* Para o botão de download */
     margin-top: 10px; /* Espaço acima do botão */

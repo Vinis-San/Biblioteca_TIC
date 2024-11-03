@@ -41,7 +41,7 @@ async function fetchBooks() {
 
 // Função para mostrar livros da pasta selecionada
 async function showBooks(folderPath) {
-    console.log(`Acessando a pasta: ${folderPath}`); // Para verificar se a função é chamada
+    console.log(`Acessando a pasta: ${folderPath}`);
     try {
         const response = await fetch(`https://api.github.com/repos/Vinis-San/books/contents/${folderPath}`);
         if (!response.ok) {
@@ -53,25 +53,55 @@ async function showBooks(folderPath) {
         const bookListModal = document.getElementById("book-list-modal");
         const modalTitle = document.getElementById("modal-title");
 
-        modalTitle.textContent = `${folderPath.split('/').pop()}`; // Define o título com o nome da pasta
+        modalTitle.textContent = `${folderPath.split('/').pop()}`;
         bookListModal.innerHTML = ""; // Limpa o conteúdo anterior
 
         data.forEach(book => {
-            if (book.type === "file" && book.name.endsWith('.pdf')) { // Verifica se é um arquivo PDF
+            if (book.type === "file" && book.name.endsWith('.pdf')) {
                 const listItem = document.createElement("li");
-                const bookNameWithoutExtension = book.name.replace('.pdf', ''); // Remove a extensão .pdf
+                const bookNameWithoutExtension = book.name.replace('.pdf', '');
 
                 listItem.innerHTML = `
-                    <h3>${bookNameWithoutExtension}</h3> <!-- Exibe o nome sem a extensão -->
-                    <a href="${book.download_url}" target="_blank">Download</a>
+                    <h3>${bookNameWithoutExtension}</h3>
+                    <button class="download-btn" onclick="window.open('${book.download_url}', '_blank')">
+                        <p class="text">Download</p>
+                        <div class="svg">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="white" class="bi bi-download" viewBox="0 0 16 16"> 
+                                <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"></path> 
+                                <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"></path> 
+                            </svg>
+                        </div>
+                    </button>
                 `;
+
                 bookListModal.appendChild(listItem);
             }
         });
 
         modal.style.display = "block"; // Abre o modal
+        filterBooks(); // Chama a função de filtro após adicionar os livros
     } catch (error) {
         console.error("Erro ao carregar livros:", error);
+    }
+}
+
+// Função para filtrar os livros no modal
+function filterBooks() {
+    const input = document.getElementById('searchInput');
+    const filter = input.value.toLowerCase();
+    const bookListModal = document.getElementById("book-list-modal");
+    const listItems = bookListModal.getElementsByTagName('li');
+
+    for (let i = 0; i < listItems.length; i++) {
+        const h3 = listItems[i].getElementsByTagName("h3")[0];
+        if (h3) {
+            const textValue = h3.textContent || h3.innerText;
+            if (textValue.toLowerCase().indexOf(filter) > -1) {
+                listItems[i].style.display = ""; // Mostra o item
+            } else {
+                listItems[i].style.display = "none"; // Oculta o item
+            }
+        }
     }
 }
 
