@@ -1,0 +1,176 @@
+:root {
+    --background-color-light: #e6e6e6; /* Cor de fundo no modo claro */
+    --text-color-light: #333; /* Cor do texto no modo claro */
+    --background-color-dark: #1a1a1a; /* Cor de fundo no modo escuro */
+    --text-color-dark: #ffffff; /* Cor do texto no modo escuro */
+    --card-background-light: #f4f4f4; /* Cor de fundo dos cards no modo claro */
+    --card-background-dark: #444; /* Cor de fundo dos cards no modo escuro */
+}
+
+/* Estilos Gerais */
+body {
+    font-family: 'Roboto Mono', monospace;
+    margin: 0;
+    padding: 0;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #222;
+}
+
+/* Ajustes de cor do texto do header por modo */
+body.light-mode header {
+    color: var(--text-color-light); /* Para o modo claro */
+}
+
+body.dark-mode header {
+    color: var(--text-color-dark); /* Para o modo escuro */
+}
+
+h1, h2 {
+    margin: 0;
+}
+
+/* Estilo do botão de menu */
+#menuToggle {
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: var(--text-color-light); /* Usando variável para cor do botão */
+}
+
+/* Estilo da lista de livros */
+.book-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.book-item {
+    background-color: var(--card-background-light); /* Fundo padrão */
+    color: var(--text-color-light); /* Cor padrão do texto */
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+/* Efeito ao passar o mouse sobre os cards */
+.book-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo do link de download */
+.download-link {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: var(--text-color-light);
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.download-link:hover {
+    background-color: #0056b3;
+}
+
+/* Rodapé */
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #222;
+    color: var(--text-color-light);
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+/* Temas Claro e Escuro */
+body.light-mode {
+    background-color: var(--background-color-light); /* Cor de fundo no modo claro */
+    color: var(--text-color-light); /* Cor do texto no modo claro */
+}
+
+body.dark-mode {
+    background-color: var(--background-color-dark); /* Cor de fundo no modo escuro */
+    color: var(--text-color-dark); /* Cor do texto no modo escuro */
+}
+
+body.dark-mode header,
+body.dark-mode footer {
+    background-color: #222;
+}
+
+body.dark-mode .book-item {
+    background-color: var(--card-background-dark); /* Fundo dos cards no modo escuro */
+    color: var(--text-color-dark); /* Cor do texto no modo escuro */
+}
+
+/* Responsivo */
+@media (max-width: 600px) {
+    .book-list {
+        grid-template-columns: 1fr; /* Exibe uma coluna em telas pequenas */
+    }
+
+    footer {
+        position: static; /* Remove a posição fixa do rodapé em telas pequenas */
+    }
+}
+
+/* Estilo do campo de input */
+.search-input {
+    width: 100%; /* Largura total do contêiner */
+    max-width: 400px; /* Limite de largura */
+    padding: 10px; /* Espaçamento interno */
+    border: 1px solid #ccc; /* Borda clara */
+    border-radius: 25px; /* Bordas arredondadas */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    transition: border 0.3s, box-shadow 0.3s; /* Transições suaves */
+    font-size: 16px; /* Tamanho da fonte */
+    outline: none; /* Remove o contorno padrão */
+    background-color: var(--card-background-light); /* Fundo padrão no modo claro */
+    color: var(--text-color-light); /* Cor do texto no modo claro */
+}
+
+/* Efeito ao focar no campo de input */
+.search-input:focus {
+    border-color: #007bff; /* Cor da borda ao focar */
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2); /* Sombra mais intensa */
+}
+
+/* Estilos para o modo escuro */
+body.dark-mode .search-input {
+    background-color: var(--card-background-dark); /* Fundo no modo escuro */
+    color: var(--text-color-dark); /* Cor do texto no modo escuro */
+    border: 1px solid #555; /* Cor da borda no modo escuro */
+}
+
+/* Estilo do ícone de busca (opcional) */
+.search-icon {
+    position: absolute; /* Posiciona o ícone dentro do contêiner */
+    left: 10px; /* Margem à esquerda */
+    top: 50%; /* Centraliza verticalmente */
+    transform: translateY(-50%); /* Ajusta a posição do ícone */
+    color: var(--text-color-light); /* Cor do ícone no modo claro */
+}
+
+/* Estilos para o ícone no modo escuro */
+body.dark-mode .search-icon {
+    color: var(--text-color-dark); /* Cor do ícone no modo escuro */
+}
+
+/* Contêiner para o input e o ícone */
+.search-container {
+    position: relative; /* Necessário para o posicionamento absoluto do ícone */
+    margin: 20px 0; /* Margens para espaçamento */
+}
