@@ -30,8 +30,6 @@ async function fetchBooks() {
                 folderLink.addEventListener("click", function() {
                     showBooks(folder.path); // Chama a função showBooks
                 });
-        
-                folderCard.appendChild(folderLink); // Adiciona o link ao card
             }
         });
     } catch (error) {
@@ -72,9 +70,7 @@ async function showBooks(folderPath) {
                         </svg>
                     </div>
                 </button>
-            `;
-            
-
+                `;
                 bookListModal.appendChild(listItem);
             }
         });
@@ -115,6 +111,9 @@ document.querySelector(".close-button").onclick = function() {
 document.getElementById("theme-switch").addEventListener("change", function() {
     document.body.classList.toggle("dark-mode");
 });
+
+// Adiciona o evento de input ao campo de busca
+document.getElementById('searchInput').addEventListener('input', filterBooks);
 
 // Carrega as pastas ao iniciar
 fetchBooks();
