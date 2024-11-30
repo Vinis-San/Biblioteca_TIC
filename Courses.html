@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Estrutura de Pastas</title>
+  <link rel="stylesheet" href="Courses.css"> <!-- seu arquivo CSS -->
+</head>
+<body>
+  <div class="container">
+    <!-- Div da esquerda com a scrollbar -->
+    <div class="sidebar" id="sidebar">
+      <h3>Pastas</h3>
+      <input type="text" >
+      <ul id="pastas-list">
+        <!-- As pastas serão inseridas aqui via JavaScript -->
+      </ul>
+    </div>
+
+    <!-- Div da direita para exibir arquivos -->
+    <div class="content" id="content">
+      <h3>Arquivos</h3>
+      <div id="arquivos-list">
+        <!-- Os arquivos serão inseridos aqui -->
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Dados simulados para pastas e arquivos
+    const pastas = [
+      {
+        nome: "Tecnologias",
+        arquivos: [
+          { nome: "Adobe.md", url: "https://github.com/Vinis-San/cursos-gratuitos/blob/main/tecnologias/Adobe.md" },
+          { nome: "Algoritmo.md", url: "https://github.com/Vinis-San/cursos-gratuitos/blob/main/tecnologias/Algoritmo.md" }
+        ]
+      },
+      {
+        nome: "Desenvolvimento",
+        arquivos: [
+          { nome: "Ambiente de desenvolvimento no Windows.md", url: "https://github.com/Vinis-San/cursos-gratuitos/blob/main/tecnologias/Ambiente%20de%20desenvolvimento%20no%20Windows.md" }
+        ]
+      }
+    ];
+
+    // Função para preencher as pastas na sidebar
+    function preencherPastas() {
+      const pastasList = document.getElementById("pastas-list");
+      pastas.forEach((pasta, index) => {
+        const li = document.createElement("li");
+        li.textContent = pasta.nome;
+        li.setAttribute("data-index", index); // Salva o índice para saber qual pasta foi clicada
+        li.addEventListener("click", exibirArquivos);
+        pastasList.appendChild(li);
+      });
+    }
+
+    // Função de filtro para o campo de busca
+function filterCourses() {
+    const searchTerm = document.getElementById("searchInput").value.toLowerCase();
+    const courses = document.querySelectorAll(".course-card");
+
+    courses.forEach(course => {
+        const courseName = course.textContent.toLowerCase();
+        if (courseName.includes(searchTerm)) {
+            course.style.display = "block";
+        } else {
+            course.style.display = "none";
+        }
+    });
+}
+
+    // Função para exibir os arquivos quando uma pasta é clicada
+    function exibirArquivos(event) {
+      const index = event.target.getAttribute("data-index");
+      const pasta = pastas[index];
+      const arquivosList = document.getElementById("arquivos-list");
+      arquivosList.innerHTML = ''; // Limpa os arquivos anteriores
+
+      pasta.arquivos.forEach(arquivo => {
+        const div = document.createElement("div");
+        const link = document.createElement("a");
+        link.href = arquivo.url;
+        link.textContent = arquivo.nome;
+        link.target = "_blank"; // Abre o link em uma nova aba
+        div.appendChild(link);
+        arquivosList.appendChild(div);
+      });
+    }
+
+    // Inicializa o conteúdo das pastas
+    preencherPastas();
+  </script>
+</body>
+</html>
